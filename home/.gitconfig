@@ -1,3 +1,8 @@
 [user]
 	name = Alex Tironati
 	email = atironati@gmail.com
+
+[alias]
+  s = status
+  co = checkout
+  br = branch

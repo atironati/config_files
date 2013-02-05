@@ -38,3 +38,10 @@ export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/lo
 
 RUBY_BINDIR=`brew info ruby|grep /bin|tr -d ' '`
 export PATH=$RUBY_BINDIR:$PATH
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+alias g='git'
+alias gs='git status '
+alias gc='git commit '
+alias gl='git log --oneline --abbrev-commit --all --graph --decorate --color'
