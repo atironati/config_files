@@ -45,3 +45,5 @@ alias g='git'
 alias gs='git status '
 alias gc='git commit '
 alias gl='git log --oneline --abbrev-commit --all --graph --decorate --color'
+
+eval "$(rbenv init -)"
