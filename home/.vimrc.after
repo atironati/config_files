@@ -1,5 +1,49 @@
-color elflord
-
 inoremap kj <Esc>
 inoremap jk <Esc>
 
+color desert
+
+let mapleader = "\<Space>"
+
+" Type <Space>o to open a new file:
+nnoremap <Leader>o :CtrlP<CR>
+
+" Type <Space>w to save file (a lot faster than :w<Enter>):
+nnoremap <Leader>w :w<CR>
+
+" Copy & paste to system clipboard with <Space>p and <Space>y:
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Enter visual line mode with <Space><Space>:
+nmap <Leader><Leader> V
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+" Hit Enter to go to end of file.
+" nnoremap <CR> G
+" Hit Backspace to go to beginning of file.
+" nnoremap <BS> gg
+
+" Quickly select text you just pasted:
+noremap gV `[v`]
+
+" Bubble single lines
+nmap <D-k> ddkP
+nmap <D-j> ddp
+" Bubble multiple lines
+vmap <D-k> xkP`[V`]
+vmap <D-j> xp`[V`]
