@@ -45,5 +45,34 @@ alias g='git'
 alias gs='git status '
 alias gc='git commit '
 alias gl='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gb="git branch"
+
+alias dev="cd ~/dev"
+
+alias be="bundle exec"
+
+# Use Ctrl-Z to switch back to Vim
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+time-from-timestamp() {
+  seconds=$1
+  len=${#seconds}
+  if [ $len > 10 ]; then
+    seconds=${seconds:0:10}
+  fi
+  date -u -r $seconds +"%Y:%m:%d %T"
+}
 
 eval "$(rbenv init -)"
